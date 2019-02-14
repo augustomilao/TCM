@@ -19,10 +19,10 @@ if(($_SESSION['pri'] == "Usuario"|| $_SESSION ['pri'] == "Comum") && $_SESSION['
 	<div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
                                         <li class="btn-hover">
-                                                <a href="sugestaon.php" class=>Nova Sugestão</a>
+                                                <a href="sugestaoincluir.php" class=>Nova Sugestão</a>
                                         </li>
                                         <li>
-                                                <a href="#" class=>Alterar Sugestão</a>
+                                                <a href="sugestaoconsultar.php" class=>Consultar Sugestão</a>
 										</li>
 										<li>
                                                 <a href="../../indexcadastrado.php" class=>Sair</a>
