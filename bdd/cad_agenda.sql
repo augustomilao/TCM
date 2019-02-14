@@ -1,26 +1,26 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.2
--- http://www.phpmyadmin.net
+-- version 4.8.0
+-- https://www.phpmyadmin.net/
 --
--- Máquina: localhost
--- Data de Criação: 07-Fev-2019 às 14:12
--- Versão do servidor: 5.6.13
--- versão do PHP: 5.4.17
+-- Host: 127.0.0.1
+-- Generation Time: 14-Fev-2019 às 22:46
+-- Versão do servidor: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de Dados: `cad_agenda`
+-- Database: `cad_agenda`
 --
-CREATE DATABASE IF NOT EXISTS `cad_agenda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cad_agenda`;
 
 -- --------------------------------------------------------
 
@@ -28,11 +28,10 @@ USE `cad_agenda`;
 -- Estrutura da tabela `acesso`
 --
 
-CREATE TABLE IF NOT EXISTS `acesso` (
+CREATE TABLE `acesso` (
   `login` varchar(50) NOT NULL,
   `senha` varchar(20) NOT NULL,
-  `privilegio` varchar(20) NOT NULL,
-  PRIMARY KEY (`login`,`senha`)
+  `privilegio` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -51,14 +50,13 @@ INSERT INTO `acesso` (`login`, `senha`, `privilegio`) VALUES
 -- Estrutura da tabela `animes`
 --
 
-CREATE TABLE IF NOT EXISTS `animes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `animes` (
+  `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `genero` varchar(30) NOT NULL,
   `episodio` varchar(4) NOT NULL,
-  `datalanc` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `datalanc` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `animes`
@@ -76,18 +74,60 @@ INSERT INTO `animes` (`id`, `nome`, `genero`, `episodio`, `datalanc`) VALUES
 -- Estrutura da tabela `mangas`
 --
 
-CREATE TABLE IF NOT EXISTS `mangas` (
-  `nome` varchar(30) NOT NULL,
-  `sugestao` varchar(500) NOT NULL,
-  PRIMARY KEY (`nome`)
+CREATE TABLE `mangas` (
+  `id` int(3) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `sugestao` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `mangas`
 --
 
-INSERT INTO `mangas` (`nome`, `sugestao`) VALUES
-('test1', 'Apenas um texto aleatório pra testar esse sistema q está machucando minha cabeça por eu n ter criatividade nenhuma!');
+INSERT INTO `mangas` (`id`, `nome`, `sugestao`) VALUES
+(1, 'Apenas um texto aleatório pra testar esse sistema ', ''),
+(2, 'test2', 'akskdhsakjdhasdjkajshda'),
+(3, 'test6', '1232132132');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `acesso`
+--
+ALTER TABLE `acesso`
+  ADD PRIMARY KEY (`login`,`senha`);
+
+--
+-- Indexes for table `animes`
+--
+ALTER TABLE `animes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mangas`
+--
+ALTER TABLE `mangas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nome` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `animes`
+--
+ALTER TABLE `animes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `mangas`
+--
+ALTER TABLE `mangas`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
